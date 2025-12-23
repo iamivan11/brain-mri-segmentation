@@ -28,9 +28,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 
-# Poetry
-poetry.lock
-
 # PyInstaller
 *.manifest
 *.spec
