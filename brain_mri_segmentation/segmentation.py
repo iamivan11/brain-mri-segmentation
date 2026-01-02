@@ -39,6 +39,7 @@ def close(img):
     return result.astype(np.float32)
 
 def kmeans_segmentation(img, k):
+    """Segment image into k clusters using K-means, with labels ranked by intensity."""
     pixel_values = img.reshape(-1, 1).astype(np.float32)
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
     _, labels, centers = cv2.kmeans(pixel_values, k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
