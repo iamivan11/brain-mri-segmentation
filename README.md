@@ -150,7 +150,7 @@ The best performing 2D approaches were adapted for 3D processing:
 
 ### Prerequisites
 
-- Python 3.9+
+- Python >=3.10, <3.13
 - Poetry (recommended) or pip
 
 ### Installation
@@ -158,8 +158,8 @@ The best performing 2D approaches were adapted for 3D processing:
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
-   cd .../brain_mri_segmentation
+   git clone https://github.com/iamivan11/brain-mri-segmentation.git
+   cd brain_mri_segmentation
    ```
 
 2. **Install dependencies using Poetry:**
@@ -173,34 +173,58 @@ The best performing 2D approaches were adapted for 3D processing:
    - numpy
    - matplotlib
    - opencv-python
-   - scikit-image
-   - scikit-learn
    - scipy
+   - scikit-learn
+   - scikit-image
+   - threadpoolctl
+   - ipykernel
+
+4. **Dev dependencies:**
+   - pre-commit (>=4.5.1,<5.0.0)
 
 ### Usage
 
 1. **For main experiments, evaluations and results:**
 
    ```bash
-   jupyter notebook main.ipynb
+   jupyter notebook notebooks/main.ipynb
    ```
 
 2. **For step-by-step explanations:**
 
    ```bash
-   jupyter notebook step_by_step.ipynb
+   jupyter notebook notebooks/step_by_step.ipynb
    ```
 
 3. **Data requirements:**
-   - Place `Brain.mat` in the project root directory
+   - Place `brain.mat` in the project root directory
    - The file should contain 'T1' (MRI data) and 'label' (ground truth) arrays
 
 ### File Structure
 
-- `README.md`: This file
-- `main.ipynb`: Complete experiments and evaluation
-- `step_by_step.ipynb`: Step-by-step explanations
-- `utils.py`: Core segmentation, metrics, and visualization modules
-- `Brain.mat`: MRI data and ground truth labels
-- `pyproject.toml` and `poetry.lock`: Dependencies
-- `demo/`: Visualization outputs and results
+```
+brain-mri-segmentation/
+├── README.md                    # This file
+├── pyproject.toml               # Project dependencies and configuration
+├── poetry.lock                  # Locked dependency versions
+├── brain.mat                    # MRI data and ground truth labels
+├── brain_mri_segmentation/     # Core package
+│   ├── __init__.py
+│   ├── basic.py                # Basic utilities
+│   ├── metrics.py              # Evaluation metrics
+│   ├── segmentation.py         # Segmentation algorithms
+│   └── visualization.py        # Visualization utilities
+├── notebooks/                   # Jupyter notebooks
+│   ├── main.ipynb              # Complete experiments and evaluation
+│   └── step_by_step.ipynb      # Step-by-step explanations
+└── demo/                        # Visualization outputs and results
+    ├── a1_2d_1.png
+    ├── a1_a2_a3_2d.png
+    ├── a2_2d_1.png
+    ├── a2_3d_1.png
+    ├── a3_2d_1.png
+    ├── a3_3d_1.png
+    ├── gt_1.png
+    ├── gt_a2_a3_3d.png
+    └── t1_1.png
+```
