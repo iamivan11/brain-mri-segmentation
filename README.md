@@ -1,4 +1,4 @@
-# Brain MRI Segmentation With Traditional CV
+# Brain MRI Segmentation With Traditional Computer Vision Techniques
 
 We study 2D and 3D brain MRI tissue segmentation using traditional computer
 vision techniques, developing and evaluating multiple approaches to segment 6
