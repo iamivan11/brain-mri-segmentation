@@ -24,6 +24,52 @@ tissue classes from T1-weighted data.
 <img src="demo/t1_1.png" width="350" alt="T1 MRI">
 <img src="demo/gt_1.png" width="350" alt="Ground Truth">
 
+## Methods
+
+All pipelines share a four-step structure: (1) extract the brain to separate the
+outer (labels 0–2) and inner (labels 3–5) tissues, (2) segment the outer
+regions, (3) segment the inner regions, and (4) combine everything into a
+six-class label map. The methods differ in the brain-extraction technique
+(step 1) and the inner-region technique (step 3). The two best 2D methods are
+also applied in 3D.
+
+### 1: Morphological Chan–Vese + Otsu + K-Means (2D)
+
+- **Brain extraction**: Morphological Chan–Vese (MCV), refined with closing and
+  area-closing to fill gaps.
+- **Outer regions (0–2)**: Otsu thresholding.
+- **Inner regions (3–5)**: K-Means clustering.
+
+### 2: Morphological Geodesic Active Contours + Otsu + K-Means (2D)
+
+- **Brain extraction**: Morphological Geodesic Active Contours (MGAC), which
+  follows image gradients (plus a balloon force) and tracks the skull boundary
+  more accurately than MCV.
+- **Outer and inner regions**: same as Method 1.
+
+### 3: Morphological Geodesic Active Contours + Otsu + Multi-Otsu (2D)
+
+- **Brain extraction**: MGAC.
+- **Outer regions (0–2)**: Otsu thresholding.
+- **Inner regions (3–5)**: multi-Otsu thresholding instead of K-Means — faster
+  and histogram-based.
+
+### 4: 3D extension
+
+- Methods 2 and 3 are run on the entire volume at once rather than slice by
+  slice, leveraging inter-slice continuity to refine boundary delineation.
+
+## Metrics
+
+Segmentations are scored against the ground-truth labels with two standard
+overlap metrics; overall scores are weighted by class frequency to account for
+tissue imbalance.
+
+| Metric            | Measures                                                          | Better |
+| ----------------- | ----------------------------------------------------------------- | :----: |
+| **F1 (Dice)**     | Overlap balancing precision and recall; primary metric            |   ↑    |
+| **Jaccard (IoU)** | Overlap as intersection over union; stricter on boundary mismatch |   ↑    |
+
 ## Setup
 
 ### Requirements
