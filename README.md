@@ -200,8 +200,3 @@ fully reproducible without GPUs or training data.
     </tr>
   </tbody>
 </table>
-
-## License
-
-Released under the [MIT License](LICENSE). The `brain.mat` dataset is not
-included and is subject to its own terms.
