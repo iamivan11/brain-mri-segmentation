@@ -50,6 +50,9 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# Ruff
+.ruff_cache/
+
 # Jupyter Notebook
 .ipynb_checkpoints
 step_by_step_2.ipynb
@@ -80,3 +83,9 @@ venv.bak/
 
 # VS Code
 .vscode/
+
+# LaTeX report sources and build artifacts (report.pdf is committed at the root)
+/report/
+
+# Local full copy of the README (kept locally, not committed)
+README.full.md

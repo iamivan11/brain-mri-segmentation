@@ -3,6 +3,7 @@ name = "brain-mri-segmentation"
 version = "0.2.0"
 description = "2D and 3D brain MRI tissue segmentation using traditional computer vision techniques (active contours, thresholding, clustering) with comprehensive evaluation on 6 tissue classes."
 authors = ["iamivan11"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
